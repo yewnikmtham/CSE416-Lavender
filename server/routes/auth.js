@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { Users } = require ("../models");
+const { Quizzes } = require ("../models");
 
 
 router.get("/", (req, res) =>{
-    res.send("Hello users");
+    res.send("Hello auth");
 });
 
 module.exports = router;
