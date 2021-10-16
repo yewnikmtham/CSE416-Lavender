@@ -7,7 +7,7 @@ const db = require("./models");
 
 //Routers
 const platformRouter = require("./routes/platform");
-app.use("/platforms", platformRouter);
+app.use("/platform", platformRouter);
 
 const userRouter = require("./routes/users");
 app.use("/users", userRouter);
