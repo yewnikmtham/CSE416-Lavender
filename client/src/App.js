@@ -7,6 +7,8 @@ import googleLogin from "./images/google-login-button.png";
 import sproutLogo from "./images/sprout.png";
 
 function App() {
+  // var loginState="";
+
   return (
     <div className="App">
       <Router>
