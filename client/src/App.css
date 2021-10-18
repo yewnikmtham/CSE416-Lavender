@@ -38,6 +38,10 @@ body {
   font-weight: lighter;
 }
 
+#sprout-logo {
+  width: 50%;
+}
+
 .searchbar {
   border: 1px solid grey;
   border-radius: 5px;
@@ -59,8 +63,8 @@ body {
 
 .search-icon {
   position: absolute;
-  top: 8px;
-  right: 295px;
+  top: 27%;
+  right: 2%;
   width: 15px;
   cursor: pointer;
 }
@@ -72,4 +76,5 @@ body {
 
 .google-login {
   width: 100%;
+    cursor: pointer;
 }
