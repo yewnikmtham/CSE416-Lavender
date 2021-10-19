@@ -1,34 +1,45 @@
 import React from 'react';
-import { makeStyles } from "@material-ui/core/styles";
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {Drawer, Toolbar, Box, List, ListItem, ListItemText, ListItemIcon, Divider, Typography} from '@material-ui/core'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Profile from "./Profile"
+import Platform from "./Platform"
 
 const drawerWidth = 240;
 
 function Home() {
     return (
         <div className="home-page">
-          <Box sx={{display: 'flex', backgroundColor: "#E6E6FA"}}>
-            <Drawer
-              variant="permanent"
-              sx={{
-                width: drawerWidth,
-                flexShrink: 0,
-                [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-              }}
-            >
+          <Box sx={{display: 'flex'}}>
+            <Router>
+              <Drawer
+                variant="permanent"
+                sx={{
+                  width: drawerWidth,
+                  flexShrink: 0,
+                  [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
+                }}
+              >
               <Toolbar/>
               <Box sx={{ overflow: 'auto' }}>
                 <List>
-                  {['View Profile', 'Create Platform'].map((text, index) => (
-                    <ListItem button key={text}>
+                  <Link to="/profile">
+                    <ListItem button key={"View Profile"}>
                       <ListItemIcon>
-                        {index % 2 === 0 ? <AccountCircleIcon/> : <AddCircleOutlineIcon/>}
+                          <AccountCircleIcon/> 
                       </ListItemIcon>
-                      <ListItemText primary={text}/>
+                      <ListItemText primary={"View Profile"}/>
                     </ListItem>
-                  ))}
+                  </Link>
+                  <Link to="/platform">
+                    <ListItem button key={"Create Platform"}>
+                      <ListItemIcon>
+                          <AddCircleOutlineIcon/> 
+                      </ListItemIcon>
+                      <ListItemText primary={"Create Platform"}/>
+                    </ListItem>
+                  </Link>
                 </List>
 
                 <Divider/>
@@ -51,6 +62,11 @@ function Home() {
                   {/* LIST OUT PLATFORMS AND QUIZZES HERE */}
                 </Typography>
               </Box>
+              <Switch>
+                <Route path="/profile" exact component={Profile}/>
+                <Route path="/platform" exact component={Platform}/>
+              </Switch>
+            </Router>
           </Box>
         </div>
     )
