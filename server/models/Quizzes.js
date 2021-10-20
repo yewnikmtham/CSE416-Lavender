@@ -5,6 +5,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             foreignKey: true,
         },
+        platform_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
+            foreignKey: true,
+        },
         time_limit: {
             type: DataTypes.TIME,
             allowNull: true,
@@ -18,8 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         Quizzes.hasMany(models.History, {
             onDelete: "cascade",
         });
+        Quizzes.belongsTo(models.Platforms);
     };
-
-    
     return Quizzes;
 }

@@ -23,7 +23,14 @@ module.exports = (sequelize, DataTypes) => {
         Users.hasMany(models.UserAnswers, {
             onDelete: "cascade",
         });
+
+        User.hasMany(models.History, {
+            onDelete: 'cascade',
+        });
+
+        User.hasOne(models.Platforms, {
+            onDelete: 'cascade',
+        });
     };
-    
     return Users;
 }

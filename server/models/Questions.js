@@ -3,7 +3,12 @@ module.exports = (sequelize, DataTypes) => {
         question_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            foreignKey: true,
+            primaryKey: true,
+        },
+        quiz_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
+            foreignKey: false,
         },
         question_text: {
             type: DataTypes.STRING,
@@ -15,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
         Questions.hasMany(models.Answers, {
             onDelete: "cascade",
         });
+        Questions.hasMany(models.UserAnswers, {
+            onDelete: 'cascade',
+        });
+        Questions.belongsTo(models.Quizzes);
     };
     
     return Questions;
