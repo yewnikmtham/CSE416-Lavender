@@ -5,10 +5,24 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             foreignKey: true,
         },
+        user_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
+            foreignKey: true,
+        },
+        platform_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
+            foreignKey: true,
+        },
         points: {
             type: DataTypes.BIGINT,
             allowNull: false,
         },
     })
+    Points.associate = (models) => {
+        Points.belongsTo(models.User);
+        Points.belongsTo(models.Platforms);
+    }
     return Points;
 }

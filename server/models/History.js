@@ -3,6 +3,16 @@ module.exports = (sequelize, DataTypes) => {
         history_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            primaryKey: true,
+        },
+        user_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
+            foreignKey: true,
+        },
+        quiz_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
             foreignKey: true,
         },
         duration: {
@@ -10,11 +20,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
         },
     })
-
-    // History.associate = (models) => {
-
-    // };
-
-
+    History.associate = (models) => {
+        History.belongsTo(models.Users);
+        History.belongsTo(models.Quizzes);
+    };
     return History;
 }

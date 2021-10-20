@@ -3,9 +3,13 @@ module.exports = (sequelize, DataTypes) => {
         platform_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            primaryKey: true,
+        },
+        user_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
             foreignKey: true,
         },
-  
         platform_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -14,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BLOB,
             allowNull: true,
         },
-        
         icon_photo: {
             type: DataTypes.BLOB,
             allowNull: true,
@@ -25,16 +28,10 @@ module.exports = (sequelize, DataTypes) => {
         Platforms.hasMany(models.Points, {
             onDelete: "cascade",
         });
-        Platforms.hasMany(models.History, {
-            onDelete: "cascade",
-        });
-        // Platforms.hasMany(models.User, {
-        //     onDelete: "cascade",
-        // });
-        Platforms.belongsTo(models.Users)
         Platforms.hasMany(models.Quizzes, {
             onDelete: "cascade",
         });
+        Platforms.belongsTo(models.Users);
     };
     //Platforms.belongTo(models.Users)
     return Platforms;
