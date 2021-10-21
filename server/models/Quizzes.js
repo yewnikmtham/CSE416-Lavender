@@ -3,7 +3,17 @@ module.exports = (sequelize, DataTypes) => {
         quiz_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            foreignKey: true,
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        quiz_name: {
+          type: DataTypes.STRING,
+          allowNull: true // testing,
+        },
+        platform_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
+            //foreignKey: true,
         },
         time_limit: {
             type: DataTypes.TIME,
@@ -11,15 +21,18 @@ module.exports = (sequelize, DataTypes) => {
         },
     })
 
-    Quizzes.associate = (models) => {
-        Quizzes.hasMany(models.Questions, {
-            onDelete: "cascade",
-        });
-        Quizzes.hasMany(models.History, {
-            onDelete: "cascade",
-        });
-    };
-
-    
+    //Quizzes.associate = (models) => {
+    //    Quizzes.hasMany(models.Questions, {
+    //        foreignKey: 'quiz_id',
+    //        onDelete: "cascade",
+    //    });
+    //    Quizzes.hasMany(models.History, {
+    //        foreignKey: 'quiz_id',
+    //        onDelete: "cascade",
+    //    });
+    //    Quizzes.belongsTo(models.Platforms, {
+    //        foreignKey: 'platform_id'
+    //    });
+    //};
     return Quizzes;
 }

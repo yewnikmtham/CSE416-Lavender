@@ -1,6 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
     const Answers = sequelize.define("Answers", {
-    answer_id: {
+        answer_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        question_id:{
             type: DataTypes.BIGINT,
             allowNull: false,
             foreignKey: true,
@@ -15,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
         },
     })
 
-    
+    Answers.associate = (models) => {
+        Answers.belongsTo(models.Questions, {
+            foreignKey: 'question_id'
+        });
+    }
     return Answers;
 }
