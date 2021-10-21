@@ -13,9 +13,11 @@ const useStyles = makeStyles((theme) => ({
     AppBar:{ 
         backgroundColor: "#241452",
         height: 63,
+        zIndex: 1250,
     },
     icon:{
         float: 'left', 
+        marginLeft: "20px",
     },
     leader:{ 
         float:'right',
@@ -30,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         borderColor:grey, 
         borderRadius: 30, 
         margin: '0 auto',
-        width: 500,
+        width: 600,
         height: 35,
     }
 })); 
