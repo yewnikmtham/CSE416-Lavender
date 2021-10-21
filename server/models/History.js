@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         quiz_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            foreignKey: true,
+            //foreignKey: true,
         },
         duration: {
             type: DataTypes.TIME,
@@ -25,9 +25,9 @@ module.exports = (sequelize, DataTypes) => {
         History.belongsTo(models.Users, {
             foreignKey: 'user_id'
         });
-        History.belongsTo(models.Quizzes, {
-            foreignKey: 'quiz_id'
-        });
+        //History.belongsTo(models.Quizzes, {
+        //    foreignKey: 'quiz_id'
+        //});
     };
     return History;
 }
