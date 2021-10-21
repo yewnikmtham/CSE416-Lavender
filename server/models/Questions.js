@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         quiz_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            foreignKey: true,
+            //foreignKey: true,
         },
         question_text: {
             type: DataTypes.STRING,
@@ -32,9 +32,9 @@ module.exports = (sequelize, DataTypes) => {
             },
             onDelete: 'cascade',
         });
-        Questions.belongsTo(models.Quizzes, {
-            foreignKey: 'quiz_id'
-        });
+        //Questions.belongsTo(models.Quizzes, {
+        //    foreignKey: 'quiz_id'
+        //});
     };
     
     return Questions;
