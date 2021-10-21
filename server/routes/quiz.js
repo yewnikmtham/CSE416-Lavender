@@ -7,7 +7,7 @@ router.post("/", (req, res) =>{
     res.send("Hello quizzes");
 });
 
-route.delete('/', (req, res) => {
+router.delete('/', (req, res) => {
     res.send('Deletes Quiz');
 });
 

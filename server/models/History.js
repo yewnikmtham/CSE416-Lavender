@@ -21,8 +21,12 @@ module.exports = (sequelize, DataTypes) => {
         },
     })
     History.associate = (models) => {
-        History.belongsTo(models.Users);
-        History.belongsTo(models.Quizzes);
+        History.belongsTo(models.Users, {
+            foreignKey: 'user_id'
+        });
+        History.belongsTo(models.Quizzes, {
+            foreignKey: 'quiz_id'
+        });
     };
     return History;
 }

@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
         },
         question_id:{
-            type:DataTypes.BIGINT,
+            type: DataTypes.BIGINT,
             allowNull: false,
             foreignKey: true,
         },
@@ -21,7 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Answers.associate = (models) => {
-        Answers.belongsTo(models.Questions);
+        Answers.belongsTo(models.Questions, {
+            foreignKey: 'question_id'
+        });
     }
     return Answers;
 }

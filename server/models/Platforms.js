@@ -26,12 +26,16 @@ module.exports = (sequelize, DataTypes) => {
 
     Platforms.associate = (models) => {
         Platforms.hasMany(models.Points, {
+            foreignKey: 'platform_id',
             onDelete: "cascade",
         });
         Platforms.hasMany(models.Quizzes, {
+            foreignKey: 'platform_id',
             onDelete: "cascade",
         });
-        Platforms.belongsTo(models.Users);
+        Platforms.belongsTo(models.Users, {
+            foreignKey: 'user_id'
+        });
     };
     //Platforms.belongTo(models.Users)
     return Platforms;

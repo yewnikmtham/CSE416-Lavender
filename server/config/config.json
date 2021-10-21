@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "root",
+    "username": "admin",
 
     "password": null,
     "database": "database_development",
