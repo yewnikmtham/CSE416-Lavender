@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
         user_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
-            primaryKey:true,
+            autoIncrement: true,
+            primaryKey: true,
         },
         email: {
             type: DataTypes.STRING,
@@ -17,13 +18,24 @@ module.exports = (sequelize, DataTypes) => {
 
     Users.associate = (models) => {
         Users.hasMany(models.Points, {
+            foreignKey: 'user_id',
             onDelete: "cascade",
         });
         
         Users.hasMany(models.UserAnswers, {
+            foreignKey: 'user_id',
             onDelete: "cascade",
         });
+
+        Users.hasMany(models.History, {
+            foreignKey: 'user_id',
+            onDelete: 'cascade',
+        });
+
+        Users.hasOne(models.Platforms, {
+            foreignKey: 'user_id',
+            onDelete: 'cascade',
+        });
     };
-    
     return Users;
 }
