@@ -16,6 +16,7 @@
     "install": "^0.13.0",
     "material-ui-icons": "^1.0.0-beta.36",
     "material-ui-search-bar": "^1.0.0",
+    "mui-datatables": "^3.7.8",
     "npm": "^8.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
