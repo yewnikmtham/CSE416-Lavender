@@ -30,10 +30,10 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'platform_id',
             onDelete: "cascade",
         });
-        Platforms.hasMany(models.Quizzes, {
-            foreignKey: 'platform_id',
-            onDelete: "cascade",
-        });
+        //Platforms.hasMany(models.Quizzes, {
+        //    foreignKey: 'platform_id',
+        //    onDelete: "cascade",
+        //});
         Platforms.belongsTo(models.Users, {
             foreignKey: 'user_id'
         });
