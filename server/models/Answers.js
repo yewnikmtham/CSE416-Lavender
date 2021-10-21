@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
         answer_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            autoIncrement: true,
             primaryKey: true,
         },
         question_id:{

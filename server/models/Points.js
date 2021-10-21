@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
         point_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            autoIncrement: true,
             primaryKey: true,
         },
         user_id: {
