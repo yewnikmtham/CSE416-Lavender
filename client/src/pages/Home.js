@@ -20,7 +20,7 @@ const useStyles = makeStyles( theme => ({
     display: 'inline-block'
   }
 }))
-function Home() {
+function Home(props) {
   const [state, setState] = useState({
     quizzes: null,
   })
@@ -28,7 +28,7 @@ function Home() {
   useEffect(() => {
     axios.get('http://localhost:3001/quiz')
     .then( res => {
-      //console.log(res);
+      console.log(res);
       setState({quizzes: res.data});
     }).catch( err => {
       //console.log(err);

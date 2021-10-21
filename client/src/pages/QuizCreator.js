@@ -3,6 +3,7 @@ import { makeStyles, styled } from '@material-ui/core/styles';
 import { Box, Button, FormControl, InputBase, TextField } from '@mui/material'
 import { useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import * as constants from '../components/constants'
 
 const useStyles = makeStyles((theme) => ({
   QuizContainer:{
@@ -52,7 +53,7 @@ export default function QuizCreate(props) {
   const location = useLocation();
   const history = useHistory();
   const onSave = (e) => {
-    axios.put(`http://localhost:3001/quiz/${props.match.params.quiz_id}/creator`, {
+    axios.put(`${constants.API_PATH}/quiz/${props.match.params.quiz_id}/creator`, {
       quiz_fields: {...state}
     }).then( res => {
       // TODO: DO something after udpate
@@ -67,7 +68,7 @@ export default function QuizCreate(props) {
     color: 'black'
   }
   const onDelete = (e) => {
-    axios.delete(`http://localhost:3001/quiz/${props.match.params.quiz_id}`)
+    axios.delete(`${constants.API_PATH}/quiz/${props.match.params.quiz_id}`)
       .then( res => {
         history.goBack()
       }).catch( err => {
@@ -79,7 +80,7 @@ export default function QuizCreate(props) {
   }
   useEffect(() => {
     if(props.location.state == null){
-      axios.get(`http://localhost:3001/quiz/${props.match.params.quiz_id}`)
+      axios.get(`${constants.API_PATH}/quiz/${props.match.params.quiz_id}`)
       .then( res => {
         //console.log(res);
         setState({quiz_name: res.data.quiz_name})

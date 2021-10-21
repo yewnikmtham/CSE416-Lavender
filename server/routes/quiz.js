@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
 
 router.post("/", async (req, res) =>{
     //res.send("Hello quizzes");
-    console.log(req);
     const quiz_fields = req.body.quiz_fields;
     const quiz = await Quizzes.create(quiz_fields)
         .catch( err => {

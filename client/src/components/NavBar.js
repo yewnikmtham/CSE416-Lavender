@@ -10,6 +10,7 @@ import { grey } from '@material-ui/core/colors';
 import Home from "../pages/Home"
 import Leaderboard from "../pages/Leaderboard"
 import QuizCreate from '../pages/QuizCreator';
+import * as constants from '../components/constants';
 
 const useStyles = makeStyles((theme) => ({
     AppBar:{ 
@@ -44,23 +45,23 @@ export default function NavBar() {
     const classes = useStyles();
     const history = useHistory();
     const onCreateQuiz = (e) => {
-      axios.post('http://localhost:3001/quiz', {
+      e.preventDefault();
+      axios.post(`${constants.API_PATH}/quiz`, {
         quiz_fields: {
           platform_id: 0,
           quiz_name: 'Untitled',
           time_limit: null
         }
-      })
-      .catch( err => {
-        console.log('Create Quiz Button: ', err);
-      })
-      .then(res => {
+      }).then(res => {
         console.log(res)
-        if( res.data.quiz_id ) {
+        if( res.status == 201 ) {
+          console.log('yes')
           history.push(`/quiz/creator/${res.data.quiz_id}`, {
             quiz: {...res.data}
           });
         }
+      }).catch( err => {
+        console.log('Create Quiz Button: ', err);
       })
     }
     return(
