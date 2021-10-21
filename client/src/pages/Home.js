@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Box, Button, Grid, Item } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
+import Sidebar from '../components/Sidebar.js';
 
 const useStyles = makeStyles( theme => ({
   homePage: {
@@ -36,6 +37,7 @@ function Home(props) {
   }, []);
     return (
         <Box className="homePage">
+          <Sidebar className={classes.drawer}/>
           <Grid container spacing={10} className={classes.gridContainer}>
             {state.quizzes?state.quizzes.map( quiz => (
               <Grid item className={classes.gridItem}  key={quiz.quiz_id}>
