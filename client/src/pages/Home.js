@@ -1,26 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState  } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { Box, Button, Grid, Item } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import Sidebar from '../components/Sidebar';
-import { CssBaseline } from '@material-ui/core';
-import { Box } from '@mui/system';
+import Sidebar from '../components/Sidebar.js';
 
-const useStyles = makeStyles((theme) => ({
-  root: { 
-    minHeight: '100vh',
-    backgroundColor: "#E6E6FA",
-    backgroundRepeat: "no-repeat"
+const useStyles = makeStyles( theme => ({
+  homePage: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexGrow: 1,
+    wdith: '60vw'
   },
-  drawer: {
-    backgroundColor: "#E6E6FA",
+  gridContainer:{
+    marginTop: 30,
+    width: '60vw',
   },
-}));
-
-function Home() {
-    const classes = useStyles();
+  gridItem: {
+    display: 'inline-block'
+  }
+}))
+function Home(props) {
+  const [state, setState] = useState({
+    quizzes: null,
+  })
+  const classes = useStyles();
+  useEffect(() => {
+    axios.get('http://localhost:3001/quiz')
+    .then( res => {
+      console.log(res);
+      setState({quizzes: res.data});
+    }).catch( err => {
+      //console.log(err);
+    })
+  }, []);
     return (
-        <Box className={classes.root}>
-          <CssBaseline/>
+        <Box className="homePage">
           <Sidebar className={classes.drawer}/>
+          <Grid container spacing={10} className={classes.gridContainer}>
+            {state.quizzes?state.quizzes.map( quiz => (
+              <Grid item className={classes.gridItem}  key={quiz.quiz_id}>
+                <Link to={{pathname: `/quiz/creator/${quiz.quiz_id}`, 
+                  quiz_id: quiz.quiz_id}} >{quiz.quiz_name}</Link>
+              </Grid>
+            )):<Grid item></Grid>}
+          </Grid>
         </Box>
     )
 }
