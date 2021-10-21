@@ -20,17 +20,14 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
     },
     drawer: {
-        backgroundColor: "#E6E6FA",
-        backgroundRepeat: "no-repeat",
         width: drawerWidth,
         flexShrink: 0,
         [`& .MuiDrawer-paper`]: { 
             width: drawerWidth, 
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            backgroundColor: "#E6E6FA",
+            backgroundRepeat: "no-repeat",
         } 
-    },
-    ListItemText: {
-        color: "black",
     },
     topten: {
         align: "center",
