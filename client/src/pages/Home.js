@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../components/Sidebar';
+import { CssBaseline } from '@material-ui/core';
+import { Box } from '@mui/system';
 
 const useStyles = makeStyles((theme) => ({
   root: { 
@@ -8,14 +10,18 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#E6E6FA",
     backgroundRepeat: "no-repeat"
   },
+  drawer: {
+    backgroundColor: "#E6E6FA",
+  },
 }));
 
 function Home() {
     const classes = useStyles();
     return (
-        <div className={classes.root}>
-          <Sidebar/>
-        </div>
+        <Box className={classes.root}>
+          <CssBaseline/>
+          <Sidebar className={classes.drawer}/>
+        </Box>
     )
 }
 
