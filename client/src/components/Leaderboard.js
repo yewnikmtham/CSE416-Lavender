@@ -22,7 +22,7 @@ function createData(playerName, points) {
 
   const useStyles = makeStyles((theme) => ({
         table:{ 
-            maxWidth: 1300,
+            minWidth: 1300,
             padding: 70,
             margin:'auto'
         },

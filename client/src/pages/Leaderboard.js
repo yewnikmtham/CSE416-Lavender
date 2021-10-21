@@ -9,7 +9,6 @@ function Leaderboard() {
 
     return (
         <div className="leaderboard-page">
-            <h1> Leaderboard </h1>
             <div className="leaderboard-wrapper">
                 <Leaderboard_com/>
             </div>
