@@ -3,6 +3,12 @@ module.exports = (sequelize, DataTypes) => {
         quiz_id: {
             type: DataTypes.BIGINT,
             allowNull: false,
+            autoIncrement: true,
+            primaryKey: true,
+        },
+        platform_id: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
             foreignKey: true,
         },
         time_limit: {
@@ -13,13 +19,16 @@ module.exports = (sequelize, DataTypes) => {
 
     Quizzes.associate = (models) => {
         Quizzes.hasMany(models.Questions, {
+            foreignKey: 'quiz_id',
             onDelete: "cascade",
         });
         Quizzes.hasMany(models.History, {
+            foreignKey: 'quiz_id',
             onDelete: "cascade",
         });
+        Quizzes.belongsTo(models.Platforms, {
+            foreignKey: 'platform_id'
+        });
     };
-
-    
     return Quizzes;
 }
