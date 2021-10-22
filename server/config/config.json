@@ -1,11 +1,11 @@
 {
   "development": {
-    "username": "admin",
+    "username": "root",
 
     "password": null,
-    "database": "database_development",
+    "database": "sprout",
 
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
@@ -17,7 +17,7 @@
   },
   "production": {
     "username": "root",
-    "password": null,
+    "password": "Testing8496*",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"

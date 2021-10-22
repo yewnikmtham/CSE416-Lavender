@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors')
 const helmet = require('helmet');
+require("dotenv").config();
 const app = express();
 
 app.use(express.json());
@@ -28,7 +29,10 @@ app.use("/search", searchRouter);
 
 db.sequelize.sync().then(() => {
 
-    app.listen(3001, () => {
+    app.listen(process.env.PORT || 3001, () => {
         console.log("Server running on port 3001");
     });
+})
+.catch((err) => {
+    console.log(err);
 });
